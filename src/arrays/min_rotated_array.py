@@ -4,17 +4,18 @@ from typing import List
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         result = nums[0]
-        left = 0
-        right = len(nums)-1
+        leftIndex = 0
+        rightIndex = len(nums)-1
+        middleIndex = 0
 
-        while left <= right:
-            if nums[left] < nums[right]:
-                result = min(nums[left], result)
+        while leftIndex <= rightIndex:
+            if nums[leftIndex] <= nums[rightIndex]:
+                return min(nums[leftIndex], result)
                 break
-            middle = (left + right) // 2
-            result = min(result, nums[middle])
-            if nums[middle] >= nums[left]:
-                left = middle + 1
+            middleIndex = (leftIndex + rightIndex) // 2
+            result = min(nums[middleIndex], result)
+            if nums[middleIndex] >= nums[leftIndex]:
+                leftIndex = middleIndex + 1
             else:
-                right = middle - 1
+                rightIndex = middleIndex - 1
         return result
