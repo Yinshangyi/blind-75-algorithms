@@ -130,3 +130,6 @@ dmypy.json
 
 # Pycharm
 .idea
+
+src/dynamic_prog/
+test/strings/test_encode.py
