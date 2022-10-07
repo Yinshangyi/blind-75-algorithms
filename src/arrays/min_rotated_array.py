@@ -3,19 +3,14 @@ from typing import List
 
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        result = nums[0]
-        leftIndex = 0
-        rightIndex = len(nums)-1
-        middleIndex = 0
-
-        while leftIndex <= rightIndex:
-            if nums[leftIndex] <= nums[rightIndex]:
-                return min(nums[leftIndex], result)
+        leftPointer = 0
+        rightPointer = len(nums) - 1
+        while leftPointer <= rightPointer:
+            if nums[leftPointer] <= nums[rightPointer]:
                 break
-            middleIndex = (leftIndex + rightIndex) // 2
-            result = min(nums[middleIndex], result)
-            if nums[middleIndex] >= nums[leftIndex]:
-                leftIndex = middleIndex + 1
+            middlePointer = int((leftPointer + rightPointer) / 2)
+            if nums[middlePointer] >= nums[leftPointer]:
+                leftPointer = middlePointer + 1
             else:
-                rightIndex = middleIndex - 1
-        return result
+                rightPointer = middlePointer
+        return nums[leftPointer]
