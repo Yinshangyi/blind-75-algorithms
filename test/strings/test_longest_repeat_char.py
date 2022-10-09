@@ -1,10 +1,10 @@
 from src.strings.longest_repeat_char import Solution
 
 
-def testFindMaxLetterInWindow():
-    letterCountInput = {"a": 2, "b": 5, "c": 1, "d": 2, "e": 5}
+def testFindMaxLetterWindow2():
+    letterCountInput = "zuaaaba"
     maxLetterCount = Solution().findMaxLetterInWindow(letterCountInput)
-    expectedMaxLetterCount = 5
+    expectedMaxLetterCount = 4
     assert maxLetterCount == expectedMaxLetterCount
 
 

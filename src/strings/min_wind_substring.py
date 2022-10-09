@@ -1,27 +1,27 @@
-import collections
+from collections import Counter
 
 
 class Solution:
 
+    def doesContainTarget(self, charCounter: Counter, target: Counter):
+        return charCounter & target == target
+
     def minWindow(self, searchString: str, target: str) -> str:
-        minSubString = ""
-        foundCharCounter = collections.Counter()
-        targetCharCounter = collections.Counter(target)
-        leftPointer, rightPointer = 0, 0
+        minWindowSubstring = ""
+        charCounter = Counter()
+        targetCounter = Counter(target)
+        leftPointer = 0
+        rightPointer = 0
 
-        for rightPointer in range(len(searchString)):
-            currentChar = searchString[rightPointer]
-
-            # If the current character is part of the target character
-            if currentChar in list(targetCharCounter.keys()):
-                foundCharCounter[currentChar] += 1
-
-            # While the current substring matches the target
-            while (foundCharCounter & targetCharCounter) == targetCharCounter:
-                currentWindow = rightPointer - leftPointer + 1
-                if currentWindow < len(minSubString) or minSubString == "":
-                    minSubString = searchString[leftPointer:rightPointer + 1]
-                foundCharCounter[searchString[leftPointer]] -= 1
+        while rightPointer < len(searchString):
+            latestChar = searchString[rightPointer]
+            charCounter[latestChar] += 1
+            while self.doesContainTarget(charCounter, targetCounter):
+                window = rightPointer - leftPointer + 1
+                firstChar = searchString[leftPointer]
+                if window < len(minWindowSubstring) or minWindowSubstring == "":
+                    minWindowSubstring = searchString[leftPointer: rightPointer + 1]
+                charCounter[firstChar] -= 1
                 leftPointer += 1
-
-        return minSubString
+            rightPointer += 1
+        return minWindowSubstring

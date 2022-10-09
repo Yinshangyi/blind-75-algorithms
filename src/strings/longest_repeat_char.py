@@ -1,28 +1,27 @@
-class Solution:
-    def findMaxLetterInWindow(self, letterCount: dict) -> int:
-        return max(letterCount.values())
+from typing import List
 
-    def characterReplacement(self, s: str, k: int) -> int:
-        lettersCount = {}
-        maxChars = 0
+
+class Solution:
+    def findMaxLetterInWindow(self, chars: List[str]) -> int:
+        letterCounter = {}
+        for char in chars:
+            if char not in letterCounter:
+                letterCounter[char] = 1
+            else:
+                letterCounter[char] += 1
+        return sorted(list(letterCounter.values()))[-1]
+
+    def characterReplacement(self, string: str, target: int) -> int:
+        maxRepeatChar = 0
         leftPointer = 0
         rightPointer = 0
 
-        while rightPointer < len(s):
-            currentLetter = s[rightPointer]
-            currentWindow = rightPointer - leftPointer + 1
-
-            # updating letter counter
-            lettersCount[currentLetter] = lettersCount.get(currentLetter, 0) + 1
-
-            # If enough replacement for the current window
-            while (currentWindow - self.findMaxLetterInWindow(lettersCount)) > k:
-                # decrease letter count for the current letter
-                leftPointerLetter = s[leftPointer]
-                lettersCount[leftPointerLetter] -= 1
+        while rightPointer < len(string):
+            currentWord = string[leftPointer:rightPointer + 1]
+            countDominantChar = self.findMaxLetterInWindow(currentWord)
+            while ((rightPointer - leftPointer + 1) - countDominantChar) > target:
                 leftPointer += 1
-                currentWindow = rightPointer - leftPointer + 1
-
-            maxChars = max(maxChars, currentWindow)
+            currentWindow = rightPointer - leftPointer + 1
+            maxRepeatChar = max(maxRepeatChar, currentWindow)
             rightPointer += 1
-        return maxChars
+        return maxRepeatChar
