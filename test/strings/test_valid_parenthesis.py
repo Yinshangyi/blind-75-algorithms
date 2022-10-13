@@ -17,3 +17,9 @@ def testValidParenthesis3():
     inputString = "(]"
     areParenthesisValid = Solution().isValid(inputString)
     assert areParenthesisValid == False
+
+
+def testValidParenthesis4():
+    inputString = ")([]"
+    areParenthesisValid = Solution().isValid(inputString)
+    assert areParenthesisValid == False
