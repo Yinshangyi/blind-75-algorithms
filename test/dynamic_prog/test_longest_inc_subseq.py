@@ -18,5 +18,5 @@ def testLongestIncreasingSubString2():
 def testLongestIncreasingSubString3():
     nums = [7, 7, 7, 7, 7, 7, 7]
     longestIncSubstring = Solution().lengthOfLIS(nums)
-    expectedLongestIncSubstring = 4
+    expectedLongestIncSubstring = 1
     assert longestIncSubstring == expectedLongestIncSubstring
