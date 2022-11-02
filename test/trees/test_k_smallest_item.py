@@ -23,9 +23,6 @@ def testKthSmallest3():
     assert smallestElement == 2
 
 
-25
-
-
 def testKthSmallest4():
     treeNode = buildTree(
         [41, 37, 44, 24, 39, 42, 48, 1, 35, 38, 40, None, 43, 46, 49, 0, 2, 30, 36, None, None, None, None, None, None,
@@ -33,7 +30,7 @@ def testKthSmallest4():
          None, None, 7, 11, 25, 27, None, None, 33, None, 6, 8, 10, 16, None, None, None, 28, None, None, 5, None, None,
          None, None, None, 15, 19, None, None, None, None, 12, None, 18, 20, None, 13, 17, None, None, 22, None, 14,
          None, None, 21, 23]
-        )
+    )
     printTree(treeNode)
     k = 25
     smallestElement = Solution().kthSmallest(treeNode, k)
