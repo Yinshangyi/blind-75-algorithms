@@ -137,3 +137,6 @@ test/trees/test_auto_complete.py
 /test/strings/test_encode.py
 /page.html
 /src/doc/
+
+.DS_Store
+*.iml

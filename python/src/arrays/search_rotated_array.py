@@ -12,7 +12,7 @@ class Solution:
             if target == nums[middleIndex]:
                 return middleIndex
             # If we are in the left subarray
-            if nums[leftIndex] < nums[middleIndex]:
+            if nums[leftIndex] <= nums[middleIndex]:
                 # Logic to go to the subarray right or left to the middleIndex
                 if target > nums[middleIndex] or target < nums[leftIndex]:
                     leftIndex = middleIndex + 1
