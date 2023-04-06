@@ -20,5 +20,24 @@ public class LongestRepeatingCharTest {
         var longestSubstring = new LongestRepeatingChar().characterReplacement(inputString, num_replacements);
         Assertions.assertEquals(4, longestSubstring);
     }
+
+    @Test
+    public void testCharacterReplacement3() {
+        var inputString = "ABAA";
+        var num_replacements = 0;
+        var longestSubstring = new LongestRepeatingChar().characterReplacement(inputString, num_replacements);
+        Assertions.assertEquals(2, longestSubstring);
+    }
+
+    @Test
+    public void testCharacterReplacement4() {
+        var inputString = "KRSCDCSONAJNHLBMDQGIFCPEKPOHQIHLTDIQGEKLRLCQNBOHNDQGHJPNDQPERNFSSSRDEQLFPCCCARFMDLHADJADAGN" +
+                "NSBNCJQOF";
+        var num_replacements = 4;
+        var longestSubstring = new LongestRepeatingChar().characterReplacement(inputString, num_replacements);
+        Assertions.assertEquals(7, longestSubstring);
+    }
+
+
 }
 
