@@ -1,7 +1,6 @@
 package com.blind75.strings;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class ValidAnagram {
     public boolean isAnagram(String input1, String input2) {
