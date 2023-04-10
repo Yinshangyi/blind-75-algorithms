@@ -1,20 +1,19 @@
 package com.blind75.linkedlists;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
 
     public static ArrayList<Integer> array2ArrayList(int[] array) {
         var list = new ArrayList<Integer>();
-        for(var element : array) {
+        for (var element : array) {
             list.add(element);
         }
         return list;
     }
 
-    public static ListNode list2LinkedList(int[] nodesArray) {
+    public static ListNode array2LinkedList(int[] nodesArray) {
         var nodesList = array2ArrayList(nodesArray);
         var node = nodesList.remove(0);
         var firstNode = new ListNode(node, null);
@@ -22,8 +21,8 @@ public class Utils {
         while (!nodesList.isEmpty()) {
             var nextValue = nodesList.remove(0);
             var nextNode = new ListNode(nextValue, null);
-            currentNode.setNext(nextNode);
-            currentNode = currentNode.getNext();
+            currentNode.next = nextNode;
+            currentNode = currentNode.next;
         }
         return firstNode;
     }
@@ -31,9 +30,9 @@ public class Utils {
     public static List<Integer> linkedList2List(ListNode node) {
         var list = new ArrayList<Integer>();
         while (node != null) {
-            var value = node.getVal();
+            var value = node.val;
             list.add(value);
-            node = node.getNext();
+            node = node.next;
         }
         return list;
     }
