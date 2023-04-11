@@ -29,6 +29,9 @@ public class Utils {
                 queue.add(node.left);
             }
 
+            if (queue.isEmpty() || nodeValuesList.isEmpty()) {
+                continue;
+            }
             newNodeVal = nodeValuesList.remove(0);
             if (newNodeVal != null) {
                 node.right = new TreeNode(newNodeVal);
