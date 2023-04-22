@@ -1,17 +1,15 @@
 package com.blind75.trees;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Utils {
 
     public static TreeNode buildTreeFromArray(Integer[] nodeValues) {
-        if(nodeValues.length == 0) {
+        if (nodeValues.length == 0) {
             return null;
         }
         var nodeValuesList = new ArrayList<Integer>();
-        for(var value : nodeValues) {
+        for (var value : nodeValues) {
             nodeValuesList.add(value);
         }
         var rootValue = nodeValuesList.remove(0);
@@ -41,23 +39,19 @@ public class Utils {
         return treeRoot;
     }
 
-    /*
-    def buildTree(values: List[int]) -> TreeNode:
-    if not values:
-        return None
+    public static boolean isTheSameTree(TreeNode treeNode1, TreeNode treeNode2) {
+        if (treeNode1 == null && treeNode2 != null) {
+            return false;
+        }
+        if (treeNode1 != null && treeNode2 == null) {
+            return false;
+        }
+        if (treeNode1 == null && treeNode2 == null) {
+            return true;
+        }
+        return treeNode1.val == treeNode2.val
+                && isTheSameTree(treeNode1.left, treeNode2.left)
+                && isTheSameTree(treeNode1.right, treeNode2.right);
+    }
 
-    it = iter(values)
-    root = TreeNode(next(it))
-    q = [root]
-    for node in q:
-        val = next(it, None)
-        if val is not None:
-            node.left = TreeNode(val)
-            q.append(node.left)
-        val = next(it, None)
-        if val is not None:
-            node.right = TreeNode(val)
-            q.append(node.right)
-    return root
-     */
 }
