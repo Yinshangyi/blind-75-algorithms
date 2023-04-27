@@ -35,6 +35,3 @@ def testKthSmallest4():
     k = 25
     smallestElement = Solution().kthSmallest(treeNode, k)
     assert smallestElement == 24
-
-
-3
