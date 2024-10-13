@@ -3,13 +3,15 @@ from typing import List
 import pytest
 
 from src.arrays.max_prod_sub_array.max_prod_finder import MaxProductSubArrayFinder
-from src.arrays.max_prod_sub_array.max_prod_finder_fp import MaxProductSubArrayFinderFP
+from src.arrays.max_prod_sub_array.max_prod_finder_fp_rec import MaxProductSubArrayFinderFPRec
+from src.arrays.max_prod_sub_array.max_prod_finder_fp_reduce import MaxProductSubArrayFinderFPReduce
 from src.arrays.max_prod_sub_array.max_prod_finder_imp import MaxProductSubArrayFinderImp
 
 
 @pytest.fixture(params=[
     MaxProductSubArrayFinderImp,
-    MaxProductSubArrayFinderFP]
+    MaxProductSubArrayFinderFPRec,
+    MaxProductSubArrayFinderFPReduce]
 )
 def max_product_subarray_finder(request: pytest.FixtureRequest):
     return request.param()
