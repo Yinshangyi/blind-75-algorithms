@@ -1,19 +1,27 @@
-from src.arrays.max_product_sub_array import Solution
+from typing import List
+
+import pytest
+
+from src.arrays.max_prod_sub_array.max_prod_finder import MaxProductSubArrayFinder
+from src.arrays.max_prod_sub_array.max_prod_finder_fp import MaxProductSubArrayFinderFP
+from src.arrays.max_prod_sub_array.max_prod_finder_imp import MaxProductSubArrayFinderImp
 
 
-def testMaxProduct1():
-    array = [2, 3, -2, 4]
-    max_product = Solution().maxProduct(array)
-    assert max_product == 6
+@pytest.fixture(params=[
+    MaxProductSubArrayFinderImp,
+    MaxProductSubArrayFinderFP]
+)
+def max_product_subarray_finder(request: pytest.FixtureRequest):
+    return request.param()
 
 
-def testMaxProduct2():
-    array = [-2, 0, -1]
-    max_product = Solution().maxProduct(array)
-    assert max_product == 0
-
-
-def testMaxProduct3():
-    array = [-4, -3, -2]
-    max_product = Solution().maxProduct(array)
-    assert max_product == 12
+@pytest.mark.parametrize("nums, exp_product", [
+    ([2, 3, -2, 4], 6),
+    ([-2, 0, -1], 0),
+    ([-4, -3, -2], 12),
+    ([-2, 3, -4], 24)
+])
+def test_should_return_the_max_product_sub_array(max_product_subarray_finder: MaxProductSubArrayFinder, nums: List[int],
+                                                 exp_product: int):
+    max_product = max_product_subarray_finder.max_product(nums)
+    assert max_product == exp_product
