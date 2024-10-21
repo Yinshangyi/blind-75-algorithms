@@ -5,7 +5,7 @@ from src.arrays.profit_finder.profit_finder import ProfitFinder
 
 class ProfitFinderImp(ProfitFinder):
 
-    def maxProfit(self, prices: List[int]) -> int:
+    def get_max_profit(self, prices: List[int]) -> int:
         buy_pointer = 0
         sell_pointer = 0
         max_profit = 0
