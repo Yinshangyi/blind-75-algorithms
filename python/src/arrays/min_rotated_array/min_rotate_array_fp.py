@@ -15,3 +15,5 @@ class MinRotatedArrayFinderFP(MinRotatedArrayFinder):
                 case [left, *_, _] if left < _nums[mid]: return helper(_nums[mid + 1:])
                 case _: return helper(_nums[:mid + 1])
         return helper(nums)
+
+

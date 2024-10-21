@@ -16,3 +16,6 @@ class MinRotatedArrayFinderImp(MinRotatedArrayFinder):
             else:
                 rightPointer = middlePointer
         return nums[leftPointer]
+
+
+
