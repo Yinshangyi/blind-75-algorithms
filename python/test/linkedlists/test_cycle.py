@@ -1,25 +1,29 @@
-from src.linkedlists.cycle import Solution
+import pytest
+
+from src.linkedlists.cycle.cycle_finder import CycleFinder
+from src.linkedlists.cycle.cycle_finder_fp import CycleFinderFP
+from src.linkedlists.cycle.cycle_finder_imp import CycleFinderImp
 from src.linkedlists.utils import ListNode
 from test.linkedlists.utils import array2LinkedList
 
 
-def testHasCycle1():
-    inputList: ListNode = array2LinkedList([3, 2, 0, -4])
+@pytest.fixture(params=[
+    CycleFinderImp,
+    CycleFinderFP
+])
+def cycle_finder(request: pytest.FixtureRequest):
+    return request.param()
+
+
+def test_should_return_true_if_one_node_points_to_a_previous_node(cycle_finder: CycleFinder):
+    input_list: ListNode = array2LinkedList([3, 2, 0, -4])
     # Make the last node next pointer to the second node
-    inputList.next.next.next.next = inputList.next
-    listHasCycle = Solution().hasCycle(inputList)
-    assert listHasCycle == True
+    input_list.next.next.next.next = input_list.next
+    list_has_cycle = cycle_finder.has_cycle(input_list)
+    assert list_has_cycle
 
 
-def testHasCycle2():
-    inputList: ListNode = array2LinkedList([1, 2])
-    # Make the last node next pointer to the first node
-    inputList.next.next = inputList
-    listHasCycle = Solution().hasCycle(inputList)
-    assert listHasCycle == True
-
-
-def testHasCycle3():
-    inputList: ListNode = array2LinkedList([1])
-    listHasCycle = Solution().hasCycle(inputList)
-    assert listHasCycle == False
+def test_should_return_false_if_there_is_no_cycle(cycle_finder: CycleFinder):
+    input_list: ListNode = array2LinkedList([1])
+    list_has_cycle = cycle_finder.has_cycle(input_list)
+    assert not list_has_cycle
