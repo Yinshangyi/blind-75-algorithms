@@ -1,9 +1,11 @@
-from typing import List
+from typing import List, Optional
 
 from src.linkedlists.utils import ListNode
 
 
-def array2LinkedList(array: List[int]) -> ListNode:
+def array_2_linked_list(array: List[int]) -> Optional[ListNode]:
+    if len(array) == 0:
+        return None
     array.reverse()
     node = ListNode(array.pop())
     currentNode = node
@@ -14,7 +16,9 @@ def array2LinkedList(array: List[int]) -> ListNode:
     return node
 
 
-def linkedList2Array(node: ListNode) -> List[int]:
+def linked_list_2_array(node: ListNode) -> List[int]:
+    if node is None:
+        return []
     array = []
     while node:
         array.append(node.val)
@@ -22,7 +26,7 @@ def linkedList2Array(node: ListNode) -> List[int]:
     return array
 
 
-def areListsEquals(linkedList1: ListNode, linkedList2: ListNode) -> bool:
+def are_lists_equals(linkedList1: ListNode, linkedList2: ListNode) -> bool:
     currentNode1 = linkedList1
     currentNode2 = linkedList2
     while currentNode1 or currentNode2:
