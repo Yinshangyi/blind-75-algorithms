@@ -1,8 +1,4 @@
-from dataclasses import dataclass
-from typing import Optional
-
-
-@dataclass
 class ListNode:
-    val: int = 0
-    next: Optional['ListNode'] = None
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
