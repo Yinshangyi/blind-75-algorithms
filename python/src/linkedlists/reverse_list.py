@@ -13,11 +13,3 @@ class Solution:
             prevNode = currentNode
             currentNode = nextNode
         return prevNode
-
-    def reverseListRec(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next:
-            return head
-        p = self.reverseListRec(head.next)
-        head.next.next = head
-        head.next = None
-        return p
