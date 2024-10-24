@@ -7,7 +7,10 @@ from src.arrays.contains_duplicates.duplicate_finder_fp import DuplicateFinderFP
 from src.arrays.contains_duplicates.duplicate_finder_imp import DuplicateFinderImp
 
 
-@pytest.fixture(params=[DuplicateFinderImp, DuplicateFinderFP])
+@pytest.fixture(params=[
+    DuplicateFinderImp,
+    DuplicateFinderFP]
+)
 def duplicate_finder(request: pytest.FixtureRequest):
     return request.param()
 
