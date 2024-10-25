@@ -1,10 +1,12 @@
 from typing import Optional
 
+from src.linkedlists.reorder_list.list_reorderer import ListReOrderer
 from src.linkedlists.utils import ListNode
 
 
-class Solution:
-    def reorderList(self, head: Optional[ListNode]) -> None:
+class ListReOrdererImp(ListReOrderer):
+
+    def reorder_list(self, head: Optional[ListNode]) -> None:
         currentNode = head
         listArray = []
         while currentNode:
