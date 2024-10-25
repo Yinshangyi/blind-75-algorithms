@@ -4,7 +4,7 @@ from src.trees.same_tree import Solution
 from src.trees.utils import TreeNode
 
 
-def buildTree(values: List[int]) -> TreeNode:
+def build_tree(values: List[int]) -> TreeNode:
     if not values:
         return None
 
