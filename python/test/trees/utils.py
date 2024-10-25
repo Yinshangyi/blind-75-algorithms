@@ -1,6 +1,5 @@
 from typing import List
 
-from src.trees.same_tree import Solution
 from src.trees.utils import TreeNode
 
 
@@ -64,5 +63,11 @@ def printTree(root: TreeNode):
         print(pstr)
 
 
-def is_the_same_tree(treeNode1: TreeNode, treeNode2: TreeNode) -> bool:
-    return Solution().isSameTree(treeNode1, treeNode2)
+def is_same_tree(root_node1: TreeNode, root_node2: TreeNode) -> bool:
+    if root_node1 is None and root_node2 is None:
+        return True
+    if root_node1 is None or root_node2 is None:
+        return False
+    return root_node1.val == root_node2.val \
+        and is_same_tree(root_node1.left, root_node2.left) \
+        and is_same_tree(root_node1.right, root_node2.right)
