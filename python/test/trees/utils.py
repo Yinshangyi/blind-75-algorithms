@@ -64,5 +64,5 @@ def printTree(root: TreeNode):
         print(pstr)
 
 
-def isTheSameTree(treeNode1: TreeNode, treeNode2: TreeNode) -> bool:
+def is_the_same_tree(treeNode1: TreeNode, treeNode2: TreeNode) -> bool:
     return Solution().isSameTree(treeNode1, treeNode2)
