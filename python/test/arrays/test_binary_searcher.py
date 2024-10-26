@@ -3,10 +3,14 @@ from typing import List
 import pytest
 
 from src.arrays.binary_searcher.binary_searcher import BinarySearcher
-from src.arrays.binary_searcher.binary_searcher_impl import BinarySearcherImpl
+from src.arrays.binary_searcher.binary_searcher_fp import BinarySearcherFP
+from src.arrays.binary_searcher.binary_searcher_imp import BinarySearcherImp
 
 
-@pytest.fixture(params=[BinarySearcherImpl])
+@pytest.fixture(params=[
+    #BinarySearcherImp,
+    BinarySearcherFP
+])
 def binary_searcher(request: pytest.FixtureRequest):
     return request.param()
 
@@ -17,8 +21,8 @@ def binary_searcher(request: pytest.FixtureRequest):
     ([1, 3, 5, 10, 20, 25, 30], 30, 6),
     ([5], 5, 0)
 ])
-def test_searcher_should_return_index_of_target_elemnent(binary_searcher: BinarySearcher, array: List[int], target: int,
-                                                         expected_index: int) -> None:
+def test_searcher_should_return_index_of_target_element(binary_searcher: BinarySearcher, array: List[int], target: int,
+                                                        expected_index: int) -> None:
     found_item_index = binary_searcher.binarySearch(array, target)
     assert found_item_index == expected_index
 

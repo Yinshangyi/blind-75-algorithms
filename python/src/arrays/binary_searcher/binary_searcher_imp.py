@@ -3,7 +3,7 @@ from typing import List
 from src.arrays.binary_searcher.binary_searcher import BinarySearcher
 
 
-class BinarySearcherImpl(BinarySearcher):
+class BinarySearcherImp(BinarySearcher):
 
     def binarySearch(self, nums: List[int], target: int) -> int:
         left_pointer = 0
