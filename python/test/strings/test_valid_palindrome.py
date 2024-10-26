@@ -6,7 +6,7 @@ from src.strings.valid_palindrome.palindrome_validator_imp import PalindromeVali
 
 
 @pytest.fixture(params=[
-    #PalindromeValidatorImp,
+    PalindromeValidatorImp,
     PalindromeValidatorFP
 ])
 def validator(request: pytest.FixtureRequest):
