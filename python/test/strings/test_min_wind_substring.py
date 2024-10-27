@@ -1,48 +1,22 @@
-import collections
+import pytest
 
-from src.strings.min_wind_substring import Solution
-
-
-def testDoesContainTarget1():
-    currentInput = collections.Counter({'a': 1, 'b': 2})
-    targetInput = collections.Counter({'a': 1, 'b': 2})
-    containsTarget = Solution().doesContainTarget(currentInput, targetInput)
-    assert containsTarget == True
+from src.strings.min_wind_substring.min_wind_finder import MinWindSubStringFinder
+from src.strings.min_wind_substring.min_wind_finder_imp import MinWindSubStringFinderImp
 
 
-def testDoesContainTarget2():
-    currentInput = collections.Counter({'a': 1, 'b': 2})
-    targetInput = collections.Counter({'a': 1, 'b': 2, 'c': 1})
-    containsTarget = Solution().doesContainTarget(currentInput, targetInput)
-    assert containsTarget == False
+@pytest.fixture(params=[
+    MinWindSubStringFinderImp
+])
+def substring_finder(request: pytest.FixtureRequest):
+    return request.param()
 
 
-def testDoesContainTarget3():
-    currentInput = collections.Counter({'a': 2, 'b': 2})
-    targetInput = collections.Counter({'a': 1, 'b': 2})
-    containsTarget = Solution().doesContainTarget(currentInput, targetInput)
-    assert containsTarget == True
-
-
-def testMinWindowSubstring1():
-    subString1 = "ADOBECODEBANC"
-    subString2 = "ABC"
-    minWindow = Solution().minWindow(subString1, subString2)
-    expectedMinWindow = "BANC"
-    assert minWindow == expectedMinWindow
-
-
-def testMinWindowSubstring2():
-    subString1 = "a"
-    subString2 = "aa"
-    minWindow = Solution().minWindow(subString1, subString2)
-    expectedMinWindow = ""
-    assert minWindow == expectedMinWindow
-
-
-def testMinWindowSubstring3():
-    subString1 = "AUIABVC"
-    subString2 = "ABC"
-    minWindow = Solution().minWindow(subString1, subString2)
-    expectedMinWindow = "ABVC"
-    assert minWindow == expectedMinWindow
+@pytest.mark.parametrize("sub_string1, sub_string2, exp_window", [
+    ("ADOBECODEBANC", "ABC", "BANC"),
+    ("a", "aa", ""),
+    ("AUIABVC", "ABC", "ABVC")
+])
+def test_should_return_the_minimum_substring_from_substring1_having_all_the_characters_from_substring2(
+        substring_finder: MinWindSubStringFinder, sub_string1: str,
+        sub_string2: str, exp_window: str):
+    assert substring_finder.min_window(sub_string1, sub_string2) == exp_window
