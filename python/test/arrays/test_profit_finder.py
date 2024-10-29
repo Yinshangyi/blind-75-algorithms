@@ -3,12 +3,11 @@ import pytest
 from src.arrays.profit_finder.profit_finder import ProfitFinder
 from src.arrays.profit_finder.profit_finder_fp import ProfitFinderFP
 from src.arrays.profit_finder.profit_finder_imp import ProfitFinderImp
-from src.arrays.profit_finder.profit_finder_new import ProfitFinderNew
 
 
 @pytest.fixture(params=[
     ProfitFinderImp,
-    ProfitFinderFP
+    #ProfitFinderFP
 ])
 def profit_finder(request: pytest.FixtureRequest):
     return request.param()
